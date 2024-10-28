@@ -99,6 +99,10 @@ namespace img_lib {
         // Создание результата с заданными размерами
         const std::int32_t width = info_header.img_width;
         const std::int32_t height = info_header.img_height;
+        // Проверка, что размеры изображения корректные
+        if (width <= 0 || height <= 0) {
+            return {};
+        }        
         Image result(width, height, Color::Black());                          // Черный фон по умолчанию
         const std::int32_t row_size = GetBMPStride(width);                    // Размер строки
         std::vector<std::uint8_t> buffer(row_size);                           // Буфер для хранения строки пикселей в памяти        
